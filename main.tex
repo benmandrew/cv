@@ -1,0 +1,167 @@
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage{cv}
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Benjamin Andrew
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{\hrefWithoutArrow{mailto:benjamin.andrew@postgrad.manchester.ac.uk}{benjamin.andrew@postgrad.manchester.ac.uk}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{http://benmandrew.com/}{benmandrew.com}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://linkedin.com/in/benmandrew}{linkedin.com/in/benmandrew}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/benmandrew}{github.com/benmandrew}}%
+    \end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+    \section{Education}
+
+        \begin{twocolentry}{Sep 2024 -- Present}
+            \textbf{University of Manchester}, PhD in Computer Science
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Project titled \textit{Developing Reliable Software for Autonomous Robots}. Supervised by Louise Dennis, Marie Farrell, and Michael Fisher.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.20 cm}
+
+        \begin{twocolentry}{Oct 2019 -- Jun 2022}
+            \textbf{University of Cambridge}, BA (Hons) in Computer Science, II.1
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Dissertation titled \textit{Delay-Tolerant Link-State Routing}. Implemented and empirically evaluated a failure-tolerant routing protocol in C to run on real Unix-based routers, comparing with traditional protocols. Supervised by Dr. Jackson Woodruff.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Teaching}
+
+        \begin{twocolentry}{Sep 2024 -- Present}
+            \textbf{Graduate Teaching Assistant}, University of Manchester
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Logic and Modelling (2nd-year course)
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.20 cm}
+
+        \begin{twocolentry}{Oct 2022 -- Jun 2024}
+            \textbf{Supervisor (TA equiv.)}, University of Cambridge
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Logic and Proof (2nd-year course)
+                \item Hoare Logic and Model Checking (3rd-year course)
+                \item Semantics of Programming Languages (2nd-year course)
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Professional Experience}
+
+        \begin{twocolentry}{Sep 2022 -- Jun 2024}
+            \textbf{Software Engineer}, Tarides -- Paris, France
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed open-source CI (Continuous Integration) software for the OCaml language's ecosystem, involving systems programming to distribute dependency solving, compilation, and testing to many operating systems and architectures.
+                \item Responsible for the CI of the Opam Repository, the central package universe for OCaml with tens of thousands of packages.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.20 cm}
+
+        \begin{twocolentry}{Jul 2021 -- Sep 2021}
+            \textbf{Embedded Systems Intern}, Tarides -- Paris, France
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Research \& development project to cross-compile the OCaml bytecode runtime to an ARM-based microcontroller using a real-time operating system as a base layer.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.20 cm}
+
+        \begin{twocolentry}{Jun 2020 -- Sep 2020}
+            \textbf{Computer Graphics Research Intern}, University of Cambridge
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed and implemented a visual model of ageing vision in virtual reality with Unity, as part of the Graphics and Displays Research Group.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Volunteering}
+
+        \begin{twocolentry}{Jul 2024 -- Aug 2024}
+            \textbf{English Teacher}, Connections English Institute -- Ibagué, Colombia
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Taught adult beginners in morning and night classes.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Related Personal Projects}
+
+        \begin{onecolentry}{}
+            \textbf{Cavalry} --- Imperative mini-language in which programs are formally verified according to logical user specifications using a Hoare logic-based prover. Supports procedures, allowing compositional and reusable proofs (\hrefWithoutArrow{https://www.benmandrew.com/articles/cavalry}{\textit{link}}).
+        \end{onecolentry}
+
+        \vspace{0.20 cm}
+
+        \begin{onecolentry}{}
+            \textbf{Probabilistic Model Checker} --- Verifier for probabilistic CTL statements about Markov models (\hrefWithoutArrow{https://www.benmandrew.com/articles/pctl}{\textit{link}}).
+        \end{onecolentry}
+
+    % \section{Publications}
+
+    %     \begin{samepage}
+    %         \begin{twocolentry}{
+    %             Jan 2004
+    %         }
+    %             \textbf{3D Finite Element Analysis of No-Insulation Coils}
+    %         \end{twocolentry}
+
+    %         \vspace{0.10 cm}
+            
+    %         \begin{onecolentry}
+    %             \mbox{Frodo Baggins}, \mbox{\textbf{\textit{John Doe}}}, \mbox{Samwise Gamgee}
+
+    %             \vspace{0.10 cm}
+                
+    %     \href{https://doi.org/10.1109/TASC.2023.3340648}{10.1109/TASC.2023.3340648}
+    %     \end{onecolentry}
+    %     \end{samepage}
+
+\end{document}
