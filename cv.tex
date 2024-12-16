@@ -1,6 +1,14 @@
 \documentclass[10pt, letterpaper]{article}
 
 \usepackage{cv}
+\usepackage{ifthen}
+\newboolean{for_website}
+\setboolean{for_website}{false}
+
+\ifthenelse{\equal{\jobname}{\detokenize{website}}}{\setboolean{for_website}{true}}{\setboolean{for_website}{false}}
+
+\usepackage{xcolor}
+\newcommand{\updateinfo}[1][\today]{\par\vfill\hfill{\scriptsize\color{gray}Last updated on #1}}
 
 \begin{document}
     \newcommand{\AND}{\unskip
@@ -9,6 +17,8 @@
     }
     \newsavebox\ANDbox
     \sbox\ANDbox{$|$}
+
+    \ifthenelse{\boolean{for_website}}{\updateinfo[December 12, 2024]}{}
 
     \begin{header}
         \fontsize{25 pt}{25 pt}\selectfont Benjamin Andrew
