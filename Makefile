@@ -3,7 +3,7 @@
 all: website.pdf cv.pdf
 
 %.pdf: build_dir build/%.pdf
-	ln -s build/$*.pdf
+	mv build/$*.pdf .
 
 build/%.pdf: cv.tex build_dir
 	pdflatex -output-directory=build -jobname=$* $<
