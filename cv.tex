@@ -8,7 +8,7 @@
 \ifthenelse{\equal{\jobname}{\detokenize{website}}}{\setboolean{for_website}{true}}{\setboolean{for_website}{false}}
 
 \usepackage{xcolor}
-\newcommand{\updateinfo}[1][\today]{\par\vfill\hfill{\scriptsize\color{gray}Last updated on #1}}
+\newcommand{\updateinfo}[1][\today]{\par\vfill\hfill{\scriptsize\color{gray}Last updated on #1} \vspace{-24pt}}
 
 \begin{document}
     \newcommand{\AND}{\unskip
@@ -18,7 +18,7 @@
     \newsavebox\ANDbox
     \sbox\ANDbox{$|$}
 
-    \ifthenelse{\boolean{for_website}}{\updateinfo[December 12, 2024]}{}
+    \ifthenelse{\boolean{for_website}}{\updateinfo[December 16, 2024]}{}
 
     \begin{header}
         \fontsize{25 pt}{25 pt}\selectfont Benjamin Andrew
@@ -75,10 +75,6 @@
 
     \section{Professional Activities}
 
-        % \begin{twocolentry}{Sep 2024 -- Present}
-        %     \textbf{Graduate Teaching Assistant}, University of Manchester
-        % \end{twocolentry}
-        % \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
                 \item Part of the local organising committee of \hrefWithoutArrow{https://ifm2024.cs.manchester.ac.uk/}{The 19th International Conference on Integrated Formal Methods} 2024.
@@ -88,30 +84,35 @@
 
     \section{Teaching Experience}
 
-        \begin{twocolentry}{Sep 2024 -- Present}
-            \textbf{Graduate Teaching Assistant}, University of Manchester
-        \end{twocolentry}
-        \vspace{0.10 cm}
+        \newcommand{\twocolhighlight}[2]{
+            \begin{twocolentry}{#1}
+                \begin{highlights}
+                    \item #2
+                \end{highlights}
+            \end{twocolentry}
+        }
+
         \begin{onecolentry}
-            \begin{highlights}
-                \item COMP21111 \textit{Logic and Modelling}
-                \item COMP11120 \textit{Mathematical Techniques for Computer Science}
-            \end{highlights}
+            \textbf{Graduate Teaching Assistant}, University of Manchester
         \end{onecolentry}
+        \vspace{0.10 cm}
+        \twocolhighlight{Sep 2024 -- Present}{COMP11120 \textit{Mathematical Techniques for Computer Science}}
+        \vspace{0.10 cm}
+        \twocolhighlight{Sep 2024 -- Dec 2024}{COMP21111 \textit{Logic and Modelling}}
 
         \vspace{0.20 cm}
 
-        \begin{twocolentry}{Oct 2022 -- Jun 2024}
-            \textbf{Supervisor} (TA equiv.), University of Cambridge
-        \end{twocolentry}
-        \vspace{0.10 cm}
         \begin{onecolentry}
-            \begin{highlights}
-                \item CST IB \textit{Logic and Proof}
-                \item CST II \textit{Hoare Logic and Model Checking}
-                \item CST IB \textit{Semantics of Programming Languages}
-            \end{highlights}
+            \textbf{Supervisor} (TA equiv.), University of Cambridge
         \end{onecolentry}
+        \vspace{0.10 cm}
+        \twocolhighlight{Apr 2023 -- Jun 2024}{CST II \textit{Hoare Logic and Model Checking}}
+        \vspace{0.10 cm}
+        \twocolhighlight{Jan 2023 -- Mar 2024}{CST IB \textit{Logic and Proof}}
+        \vspace{0.10 cm}
+        \twocolhighlight{Oct 2023 -- Dec 2023}{CST IB \textit{Semantics of Programming Languages}}
+        \vspace{0.10 cm}
+        \twocolhighlight{Oct 2022 -- Dec 2022}{CST IA \textit{Introduction to Graphics}}
 
     \section{Industry Experience}
 
