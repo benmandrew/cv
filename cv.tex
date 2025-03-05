@@ -8,193 +8,189 @@
 \ifthenelse{\equal{\jobname}{\detokenize{website}}}{\setboolean{for_website}{true}}{\setboolean{for_website}{false}}
 
 \usepackage{xcolor}
-\newcommand{\updateinfo}[1][\today]{\par\vfill\hfill{\scriptsize\color{gray}Last updated on #1} \vspace{-24pt}}
+\newcommand{\updateinfo}[1][\today]{%
+    \par\vfill\hfill{\scriptsize\color{gray}Last updated on #1} \vspace{-24pt}
+}
+
+\newcommand{\headerand}{%
+    \kern 5.0 pt%
+    |%
+    \kern 5.0 pt
+}
+\newcommand{\headerhref}[2]{\mbox{\hrefWithoutArrow{#1}{#2}}}
 
 \begin{document}
-    \newcommand{\AND}{\unskip
-        \cleaders\copy\ANDbox\hskip\wd\ANDbox
-        \ignorespaces
-    }
-    \newsavebox\ANDbox
-    \sbox\ANDbox{$|$}
 
-    \ifthenelse{\boolean{for_website}}{\updateinfo[December 30, 2024]}{}
+\ifthenelse{\boolean{for_website}}{\updateinfo[March 5th, 2025]}{}
 
-    \begin{header}
-        \fontsize{25 pt}{25 pt}\selectfont Benjamin Andrew
+\begin{header}
+    \fontsize{25 pt}{25 pt}\selectfont Ben M.\ Andrew
 
-        \vspace{5 pt}
+    \vspace{5 pt}
 
-        \normalsize
-        \mbox{\hrefWithoutArrow{mailto:benjamin.andrew@postgrad.manchester.ac.uk}{benjamin.andrew@postgrad.manchester.ac.uk}}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{http://benmandrew.com/}{benmandrew.com}}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{https://linkedin.com/in/benmandrew}{linkedin.com/in/benmandrew}}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{https://github.com/benmandrew}{github.com/benmandrew}}%
-    \end{header}
+    \normalsize
+    \headerhref{mailto:benjamin.andrew@manchester.ac.uk}{benjamin.andrew@manchester.ac.uk}%
+    \headerand%
+    \headerhref{http://benmandrew.com/}{benmandrew.com}%
+    \headerand%
+    \headerhref{https://linkedin.com/in/benmandrew}{linkedin.com}%
+    \headerand%
+    \headerhref{https://github.com/benmandrew}{github.com}%
+\end{header}
 
-    \vspace{5 pt - 0.3 cm}
+\vspace{5 pt - 0.3 cm}
 
-    \section{Education}
+\section{Education}
 
-        \begin{twocolentry}{Sep 2024 -- Present}
-            \textbf{University of Manchester}, PhD Computer Science
-        \end{twocolentry}
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Project titled \textit{Developing Reliable Software for Autonomous Robots}.
-                \item Supervised by \href{https://personalpages.manchester.ac.uk/staff/louise.dennis/}{Dr. Louise Dennis}, \href{https://mariefarrell.github.io/}{Dr. Marie Farrell}, and \href{https://personalpages.manchester.ac.uk/staff/michael.fisher/}{Prof. Michael Fisher}.
-            \end{highlights}
-        \end{onecolentry}
+    \begin{twocolentry}{Sep 2024 -- Present}
+        \textbf{University of Manchester}, PhD in Computer Science
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Project titled \textit{Developing Reliable Software for Autonomous Robots}.
+            \item Supervised by \href{https://personalpages.manchester.ac.uk/staff/louise.dennis/}{Dr. Louise Dennis}, \href{https://mariefarrell.github.io/}{Dr. Marie Farrell}, and \href{https://personalpages.manchester.ac.uk/staff/michael.fisher/}{Prof. Michael Fisher}.
+        \end{highlights}
+    \end{onecolentry}
 
-        \vspace{0.20 cm}
+    \vspace{0.20 cm}
 
-        \begin{twocolentry}{Oct 2019 -- Jun 2022}
-            \textbf{University of Cambridge}, BA (Hons) Computer Science
-        \end{twocolentry}
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Grade II.1 (70\%).
-                \item Dissertation titled \textit{Delay-Tolerant Link-State Routing}. Implemented and empirically evaluated a failure-tolerant routing protocol in C to run on real Unix-based routers, comparing with traditional protocols. Supervised by \href{https://jacksonwoodruff.com/}{Dr. Jackson Woodruff}.
-            \end{highlights}
-        \end{onecolentry}
+    \begin{twocolentry}{Oct 2019 -- Jun 2022}
+        \textbf{University of Cambridge}, BA (Hons) in Computer Science
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Grade II.1 (70\%).
+            \item Dissertation titled \textit{Delay-Tolerant Link-State Routing}. Implemented and empirically evaluated a failure-tolerant routing protocol in C to run on real Unix-based routers, comparing with traditional protocols. Supervised by \href{https://jacksonwoodruff.com/}{Dr. Jackson Woodruff}.
+        \end{highlights}
+    \end{onecolentry}
 
-    \section{Research Interests}
+\section{Research Interests}
 
-        My interests lie in the intersection of autonomous robotics and formal methods. Specifically, I am passionate about verifying mission-critical systems under uncertainty and failure.
+    My interests lie in the intersection of autonomous robotics and formal methods. Specifically, I am passionate about verifying mission-critical systems under uncertainty and failure.
 
-    \section{Professional Activities}
+\section{Professional Activities}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Part of the local organising committee of \hrefWithoutArrow{https://ifm2024.cs.manchester.ac.uk/}{The 19th International Conference on Integrated Formal Methods} 2024.
+        \item Member of the \hrefWithoutArrow{https://autonomy-and-verification.github.io}{Autonomy and Verification Network}.
+    \end{highlights}
+\end{onecolentry}
 
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Part of the local organising committee of \hrefWithoutArrow{https://ifm2024.cs.manchester.ac.uk/}{The 19th International Conference on Integrated Formal Methods} 2024.
-                \item Member of the \hrefWithoutArrow{https://autonomy-and-verification.github.io}{Autonomy and Verification Network}.
-            \end{highlights}
-        \end{onecolentry}
+\section{Teaching Experience}
 
-    \section{Teaching Experience}
+\newcommand{\twocolhighlight}[2]{%
+    \begin{twocolentry}{#1}
+        \begin{highlights}
+            \item #2
+        \end{highlights}
+    \end{twocolentry}
+}
 
-        \newcommand{\twocolhighlight}[2]{
-            \begin{twocolentry}{#1}
-                \begin{highlights}
-                    \item #2
-                \end{highlights}
-            \end{twocolentry}
-        }
+\begin{onecolentry}
+    \textbf{University of Manchester}, Graduate Teaching Assistant
+\end{onecolentry}
+\vspace{0.10 cm}
+\twocolhighlight{Semester 2 2024}{COMP60332: \textit{Automated Reasoning and Verification}}
+\vspace{0.10 cm}
+\twocolhighlight{Semester 1 2024}{COMP21111: \textit{Logic and Modelling}}
+\vspace{0.10 cm}
+\twocolhighlight{Semesters 1 \& 2 2024}{COMP11120: \textit{Mathematical Techniques for Computer Science}}
 
-        \begin{onecolentry}
-            \textbf{University of Manchester}, Graduate Teaching Assistant
-        \end{onecolentry}
-        \vspace{0.10 cm}
-        \twocolhighlight{Semester 2 2024}{COMP60332: \textit{Automated Reasoning and Verification}}
-        \vspace{0.10 cm}
-        \twocolhighlight{Semester 1 2024}{COMP21111: \textit{Logic and Modelling}}
-        \vspace{0.10 cm}
-        \twocolhighlight{Semesters 1 \& 2 2024}{COMP11120: \textit{Mathematical Techniques for Computer Science}}
+\vspace{0.20 cm}
 
-        \vspace{0.20 cm}
+\begin{onecolentry}
+  \textbf{University of Cambridge}, Supervisor (TA equiv.)
+\end{onecolentry}
+\vspace{0.10 cm}
+\twocolhighlight{Spring 2023, 2024}{Part II CST: \textit{Hoare Logic and Model Checking}}
+\vspace{0.10 cm}
+\twocolhighlight{Winter 2022, 2023, 2024}{Part IB CST: \textit{Logic and Proof}}
+\vspace{0.10 cm}
+\twocolhighlight{Autumn 2023}{Part IB CST: \textit{Semantics of Programming Languages}}
+\vspace{0.10 cm}
+\twocolhighlight{Autumn 2022}{Part IA CST: \textit{Introduction to Graphics}}
 
-        \begin{onecolentry}
-          \textbf{University of Cambridge}, Supervisor (TA equiv.)
-        \end{onecolentry}
-        \vspace{0.10 cm}
-        \twocolhighlight{Summer 2023, 2024}{Part II CST: \textit{Hoare Logic and Model Checking}}
-        \vspace{0.10 cm}
-        \twocolhighlight{Winter 2022, 2023, 2024}{Part IB CST: \textit{Logic and Proof}}
-        \vspace{0.10 cm}
-        \twocolhighlight{Autumn 2023}{Part IB CST: \textit{Semantics of Programming Languages}}
-        \vspace{0.10 cm}
-        \twocolhighlight{Autumn 2022}{Part IA CST: \textit{Introduction to Graphics}}
+\section{Industry Experience}
 
-    \section{Industry Experience}
+\begin{twocolentry}{Sep 2022 -- Jun 2024}
+    \textbf{Software Engineer}, Tarides -- Paris, France
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+    \item Developed open-source continuous integration (CI) software for the OCaml language's ecosystem, involving systems programming to distribute dependency solving, compilation, and testing to many operating systems and architectures.
+        \item Responsible for the CI of the Opam Repository, the central package universe for OCaml with tens of thousands of packages.
+    \end{highlights}
+\end{onecolentry}
 
-        \begin{twocolentry}{Sep 2022 -- Jun 2024}
-            \textbf{Software Engineer}, Tarides -- Paris, France
-        \end{twocolentry}
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-            \item Developed open-source continuous integration (CI) software for the OCaml language's ecosystem, involving systems programming to distribute dependency solving, compilation, and testing to many operating systems and architectures.
-                \item Responsible for the CI of the Opam Repository, the central package universe for OCaml with tens of thousands of packages.
-            \end{highlights}
-        \end{onecolentry}
+    \vspace{0.20 cm}
 
-        \vspace{0.20 cm}
+    \begin{twocolentry}{Jul -- Sep 2021}
+        \textbf{Embedded Systems Intern}, Tarides -- Paris, France
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Research \& development project to cross-compile the OCaml bytecode runtime to an ARM-based microcontroller using a real-time operating system as a base layer.
+        \end{highlights}
+    \end{onecolentry}
 
-        \begin{twocolentry}{Jul 2021 -- Sep 2021}
-            \textbf{Embedded Systems Intern}, Tarides -- Paris, France
-        \end{twocolentry}
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Research \& development project to cross-compile the OCaml bytecode runtime to an ARM-based microcontroller using a real-time operating system as a base layer.
-            \end{highlights}
-        \end{onecolentry}
+    \vspace{0.20 cm}
 
-        \vspace{0.20 cm}
+    \begin{twocolentry}{Jun -- Sep 2020}
+        \textbf{Computer Graphics Research Intern}, University of Cambridge
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Developed and implemented a visual model of ageing vision in virtual reality with Unity, as part of the Graphics and Displays Research Group.
+        \end{highlights}
+    \end{onecolentry}
 
-        \begin{twocolentry}{Jun 2020 -- Sep 2020}
-            \textbf{Computer Graphics Research Intern}, University of Cambridge
-        \end{twocolentry}
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Developed and implemented a visual model of ageing vision in virtual reality with Unity, as part of the Graphics and Displays Research Group.
-            \end{highlights}
-        \end{onecolentry}
+\section{Volunteering}
 
-    \section{Volunteering}
+    \begin{twocolentry}{Dec 2024 -- Present}
+        \textbf{Run Leader}, Runwild -- University of Manchester
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Lead bi-weekly group runs for a student running group.
+        \end{highlights}
+    \end{onecolentry}
 
-        \begin{twocolentry}{Dec 2024 -- Present}
-            \textbf{Run Leader}, Runwild -- University of Manchester
-        \end{twocolentry}
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Lead bi-weekly group runs for a student running group.
-            \end{highlights}
-        \end{onecolentry}
+    \vspace{0.20 cm}
 
-        \vspace{0.20 cm}
+    \begin{twocolentry}{Jul -- Aug 2024}
+        \textbf{English Teacher}, Connections English Institute -- Ibagué, Colombia
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Taught adult beginners in morning and night classes.
+        \end{highlights}
+    \end{onecolentry}
 
-        \begin{twocolentry}{Jul 2024 -- Aug 2024}
-            \textbf{English Teacher}, Connections English Institute -- Ibagué, Colombia
-        \end{twocolentry}
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Taught adult beginners in morning and night classes.
-            \end{highlights}
-        \end{onecolentry}
+% \section{Publications}
 
-    % \section{Publications}
+%     \begin{samepage}
+%         \begin{twocolentry}{
+%             Jan 2004
+%         }
+%             \textbf{3D Finite Element Analysis of No-Insulation Coils}
+%         \end{twocolentry}
 
-    %     \begin{samepage}
-    %         \begin{twocolentry}{
-    %             Jan 2004
-    %         }
-    %             \textbf{3D Finite Element Analysis of No-Insulation Coils}
-    %         \end{twocolentry}
+%         \vspace{0.10 cm}
 
-    %         \vspace{0.10 cm}
-            
-    %         \begin{onecolentry}
-    %             \mbox{Frodo Baggins}, \mbox{\textbf{\textit{John Doe}}}, \mbox{Samwise Gamgee}
+%         \begin{onecolentry}
+%             \mbox{Frodo Baggins}, \mbox{\textbf{\textit{John Doe}}}, \mbox{Samwise Gamgee}
 
-    %             \vspace{0.10 cm}
-                
-    %     \href{https://doi.org/10.1109/TASC.2023.3340648}{10.1109/TASC.2023.3340648}
-    %     \end{onecolentry}
-    %     \end{samepage}
+%             \vspace{0.10 cm}
+
+%     \href{https://doi.org/10.1109/TASC.2023.3340648}{10.1109/TASC.2023.3340648}
+%     \end{onecolentry}
+%     \end{samepage}
 
 \end{document}
