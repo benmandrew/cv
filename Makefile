@@ -2,14 +2,12 @@
 
 all: website.pdf cv.pdf
 
-%.pdf: build_dir build/%.pdf
-	mv -f build/$*.pdf .
+%.pdf: build/%.pdf
+	cp -f build/$*.pdf .
 
-build/%.pdf: cv.tex build_dir
+build/%.pdf: cv.tex
+	@mkdir -p $(@D)
 	pdflatex -output-directory=build -halt-on-error -jobname=$* $<
-
-build_dir:
-	mkdir -p build
 
 clean:
 	rm website.pdf cv.pdf
