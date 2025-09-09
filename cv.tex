@@ -4,8 +4,11 @@
 \usepackage{ifthen}
 \newboolean{for_website}
 \setboolean{for_website}{false}
+\newboolean{no_links}
+\setboolean{no_links}{false}
 
 \ifthenelse{\equal{\jobname}{\detokenize{website}}}{\setboolean{for_website}{true}}{\setboolean{for_website}{false}}
+\ifthenelse{\equal{\jobname}{\detokenize{nolinks}}}{\setboolean{no_links}{true}}{\setboolean{no_links}{false}}
 
 \usepackage{xcolor}
 \newcommand{\updateinfo}[1][\today]{%
@@ -23,6 +26,8 @@
 
 \ifthenelse{\boolean{for_website}}{\updateinfo[Sep 9th, 2025]}{}
 
+\ifthenelse{\boolean{no_links}}{\begin{NoHyper}}{}
+
 \begin{header}
     \fontsize{25 pt}{25 pt}\selectfont Ben M.\ Andrew
 
@@ -32,10 +37,12 @@
     \headerhref{mailto:benjamin.andrew@manchester.ac.uk}{benjamin.andrew@manchester.ac.uk}%
     \headerand%
     \headerhref{http://benmandrew.com/}{benmandrew.com}%
+    \ifthenelse{\boolean{no_links}}{}{%
     \headerand%
     \headerhref{https://linkedin.com/in/benmandrew}{linkedin.com}%
     \headerand%
     \headerhref{https://github.com/benmandrew}{github.com}%
+    }
 \end{header}
 
 \vspace{5 pt - 0.3 cm}
@@ -180,5 +187,7 @@
             \item Taught adult beginners in morning and night classes.
         \end{highlights}
     \end{onecolentry}
+
+\ifthenelse{\boolean{no_links}}{\end{NoHyper}}{}
 
 \end{document}

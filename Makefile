@@ -1,6 +1,8 @@
 .PHONY: all clean lint
 
-all: website.pdf cv.pdf
+OUT_PDFS = website.pdf nolinks.pdf cv.pdf
+
+all: $(OUT_PDFS)
 
 %.pdf: build/%.pdf
 	cp -f build/$*.pdf .
@@ -10,7 +12,7 @@ build/%.pdf: cv.tex
 	pdflatex -output-directory=build -halt-on-error -jobname=$* $<
 
 clean:
-	rm website.pdf cv.pdf
+	rm $(OUT_PDFS)
 
 lint:
 	lacheck *.tex
