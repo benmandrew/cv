@@ -9,7 +9,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Install dependecies
+      - name: Cache LaTeX packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            /usr/share/texlive
+            /usr/share/texmf
+            /var/lib/texmf
+          key: ${{ runner.os }}-texlive-v1
+          restore-keys: |
+            ${{ runner.os }}-texlive-
+      
+      - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra rsync
