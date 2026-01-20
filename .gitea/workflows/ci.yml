@@ -20,6 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
+          sudo apt-get install -y --download-only texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra rsync
           sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra rsync
       
       - name: Build PDFs
