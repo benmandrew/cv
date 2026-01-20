@@ -9,16 +9,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Cache LaTeX packages
+      - name: Cache apt packages
         uses: actions/cache@v3
         with:
-          path: |
-            /usr/share/texlive
-            /usr/share/texmf
-            /var/lib/texmf
-          key: ${{ runner.os }}-texlive-v1
+          path: /var/cache/apt/archives
+          key: ${{ runner.os }}-apt-texlive-${{ hashFiles('**/ci.yml') }}
           restore-keys: |
-            ${{ runner.os }}-texlive-
+            ${{ runner.os }}-apt-texlive-
       
       - name: Install dependencies
         run: |
