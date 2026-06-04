@@ -1,4 +1,4 @@
-.PHONY: all clean lint
+.PHONY: all clean lint lint-lacheck lint-chktex
 
 OUT_PDFS = website.pdf nolinks.pdf cv.pdf
 
@@ -14,5 +14,10 @@ build/%.pdf: cv.tex
 clean:
 	rm $(OUT_PDFS)
 
-lint:
+lint: lint-lacheck lint-chktex
+
+lint-lacheck:
 	lacheck *.tex
+
+lint-chktex:
+	chktex -q -n1 -n8 -n12 *.tex
