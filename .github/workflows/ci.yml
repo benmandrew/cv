@@ -12,15 +12,19 @@ jobs:
       - name: Cache apt packages
         uses: actions/cache@v3
         with:
-          path: /var/cache/apt/archives
+          path: ~/apt-cache
           key: ${{ runner.os }}-apt-texlive-${{ hashFiles('**/ci.yml') }}
           restore-keys: |
             ${{ runner.os }}-apt-texlive-
-      
+
       - name: Install dependencies
         run: |
           sudo apt-get update
+          if [ -d ~/apt-cache ]; then sudo cp ~/apt-cache/*.deb /var/cache/apt/archives/ 2>/dev/null || true; fi
           sudo apt-get install -y --download-only texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
+          mkdir -p ~/apt-cache
+          sudo cp /var/cache/apt/archives/*.deb ~/apt-cache/
+          sudo chown -R runner ~/apt-cache
           sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
       
       - name: Build PDFs
