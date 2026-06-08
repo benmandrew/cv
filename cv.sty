@@ -144,5 +144,17 @@
   }%
 }%
 
+\newenvironment{cventry}[2]{%
+    \begin{twocolentry}{#1}
+        #2
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+}{%
+        \end{highlights}
+    \end{onecolentry}
+}
+
 % save the original href command in a new command:
 \let\hrefWithoutArrow\href
