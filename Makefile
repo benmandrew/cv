@@ -9,7 +9,7 @@ all: $(OUT_PDFS)
 
 build/%.pdf: cv.tex
 	@mkdir -p $(@D)
-	pdflatex -output-directory=build -halt-on-error -jobname=$* $<
+	pdflatex -output-directory=build -halt-on-error -jobname=$* $< < /dev/null
 
 clean:
 	rm $(OUT_PDFS)
