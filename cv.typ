@@ -77,7 +77,7 @@
   [*University of Cambridge*, BA (Hons) in Computer Science],
 )[
   - Grade II.1 (70%).
-  - Dissertation titled _Delay-Tolerant Link-State Routing_. Implemented and empirically evaluated a failure-tolerant routing protocol in C to run on real Unix-based routers, comparing with traditional protocols. Supervised by #clink("https://jacksonwoodruff.com/", "Dr. Jackson Woodruff").
+  - Dissertation titled _Delay-Tolerant Link-State Routing_. Implemented and empirically evaluated a failure-tolerant routing protocol in C to run on real Unix-based routers, comparing it against traditional protocols. Supervised by #clink("https://jacksonwoodruff.com/", "Dr. Jackson Woodruff").
 ]
 
 #section[Publications]
@@ -90,9 +90,16 @@
 
 #section[Skills]
 
-- *Programming Languages:* OCaml, C++, C, Python, Rust
-- *Tools:* Git, Docker, Claude Code
-- *Spoken Languages:* English, French
+*Programming Languages:* OCaml, C++, C, Python, Rust
+
+#v(entryspacing)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 0.15cm,
+  [*Tools:* Git, Docker, Claude Code],
+  [*Spoken Languages:* English, French],
+)
 
 #section[Industry Experience]
 
@@ -101,7 +108,7 @@
   [*Software Engineer*, Tarides -- Paris, France],
 )[
   - Built open-source CI infrastructure for the OCaml ecosystem, distributing dependency solving, compilation, and testing across a broad matrix of operating systems, CPU architectures, and compiler versions.
-  - Ran continuous testing of tens of thousands of packages across the Opam Repository, OCaml's central package universe.
+  - Tested tens of thousands of packages across the Opam Repository, OCaml's central package universe.
   - Exposed concrete bugs in the OCaml 5 multicore runtime through systematic stress-testing, reporting and tracking them to resolution upstream.
 ]
 
@@ -111,7 +118,7 @@
   [Jul -- Sep 2021],
   [*Embedded Systems Intern*, Tarides -- Paris, France],
 )[
-  - Research \& development project to cross-compile the OCaml bytecode runtime to an ARM-based microcontroller using a real-time operating system as a base layer.
+  - Cross-compiled the OCaml bytecode runtime to an ARM-based microcontroller running a real-time operating system, as part of an R\&D project.
 ]
 
 #v(entryspacing)
@@ -138,5 +145,5 @@
   [Oct 2024 -- May 2026],
   [*University of Manchester*, Graduate Teaching Assistant],
 )[
-  - Assisting in teaching graduate and undergraduate courses in computer science, including topics such as software engineering, logic, and formal verification.
+  - Assisted in teaching graduate and undergraduate courses in computer science, including topics such as software engineering, logic, and formal verification.
 ]
