@@ -7,21 +7,21 @@
 #set document(title: "Benjamin Andrew's CV", author: "Benjamin Andrew")
 #set page(paper: "us-letter", margin: 2cm)
 #set text(font: "XCharter", size: 10pt, fill: black)
-#set par(justify: false, leading: 0.45em, spacing: 0.4em)
-#set list(marker: [•], indent: 0pt, body-indent: 8pt, spacing: 0.1em)
+#set par(justify: false, leading: 0.55em, spacing: 0.4em)
+#set list(marker: [•], indent: 0pt, body-indent: 8pt, tight: false, spacing: 0.26cm)
 
-#let entryspacing = 0.08cm
+#let entryspacing = 0.20cm
 
 // Strip links entirely for the no-links variant, otherwise render as a
 // normal (colored, underlined) hyperlink.
 #let clink(url, body) = if no-links { body } else { link(url)[#underline(text(fill: blue, body))] }
 
 #let section(title) = {
-  v(0.2cm)
+  v(0.3cm)
   text(weight: "bold", size: 12pt, title)
   v(1pt)
   line(length: 100%, stroke: 0.5pt)
-  v(0.12cm)
+  v(0.2cm)
 }
 
 #let cventry(date, title, body) = {
@@ -31,7 +31,7 @@
     align(left, title),
     align(right, date),
   )
-  v(0.05cm)
+  v(0.1cm)
   body
 }
 
@@ -55,7 +55,7 @@
 ]
 
 #if for-website [
-  #place(top + right, dy: -2cm)[
+  #place(top + right, dy: -1cm)[
     #text(size: 8pt, fill: gray, style: "italic")[Last updated on Jun 27th, 2026]
   ]
 ]
