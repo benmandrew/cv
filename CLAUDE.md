@@ -8,6 +8,11 @@ A LaTeX CV for Ben Andrew. A single source file (`cv.tex`) compiles into three v
 
 ## Commands
 
+Enter the dev shell first (provides pdflatex, chktex, lacheck, make — pinned via `flake.lock`):
+```sh
+nix develop
+```
+
 ```sh
 # Build all three PDFs
 make all
@@ -26,7 +31,7 @@ make lint-chktex   # style checks (suppresses warnings -n1 -n8 -n12)
 make clean
 ```
 
-Install dependencies (Ubuntu/Debian):
+Without Nix, install dependencies manually (Ubuntu/Debian):
 ```sh
 sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
 ```
