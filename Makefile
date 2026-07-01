@@ -1,23 +1,23 @@
-.PHONY: all clean lint lint-lacheck lint-chktex
+.PHONY: all clean lint
 
 OUT_PDFS = website.pdf nolinks.pdf cv.pdf
 
 all: $(OUT_PDFS)
 
-%.pdf: build/%.pdf
-	cp -f build/$*.pdf .
+cv.pdf: cv.typ
+	typst compile $< $@
 
-build/%.pdf: cv.tex
-	@mkdir -p $(@D)
-	pdflatex -output-directory=build -halt-on-error -jobname=$* $< < /dev/null
+website.pdf: cv.typ
+	typst compile --input variant=website $< $@
+
+nolinks.pdf: cv.typ
+	typst compile --input variant=nolinks $< $@
 
 clean:
-	rm $(OUT_PDFS)
+	rm -f $(OUT_PDFS)
 
-lint: lint-lacheck lint-chktex
-
-lint-lacheck:
-	lacheck *.tex
-
-lint-chktex:
-	chktex -q -n1 -n8 -n12 *.tex
+# Compiling surfaces Typst's own warnings (unresolved refs, unknown fonts, etc.)
+lint:
+	typst compile -f pdf cv.typ /dev/null
+	typst compile -f pdf --input variant=website cv.typ /dev/null
+	typst compile -f pdf --input variant=nolinks cv.typ /dev/null

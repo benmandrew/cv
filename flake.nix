@@ -1,7 +1,7 @@
 {
   description = "Dev shell for building the CV";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
   outputs = { self, nixpkgs }:
     let
@@ -11,35 +11,14 @@
       devShells = forAllSystems (system:
         let
           pkgs = import nixpkgs { inherit system; };
-          tex = pkgs.texlive.combine {
-            inherit (pkgs.texlive)
-              scheme-basic
-              geometry
-              titlesec
-              tools
-              xcolor
-              enumitem
-              fontawesome5
-              amsmath
-              hyperref
-              eso-pic
-              etoolbox
-              bookmark
-              lastpage
-              changepage
-              paracol
-              needspace
-              iftex
-              lm
-              charter
-              pdftex
-              chktex
-              lacheck
-              ;
-          };
+          # XCharter provides the OpenType "Charter"-family fonts Typst needs;
+          # pulled in via texlive rather than nixpkgs' font sets, which don't
+          # package it directly.
+          xcharterRun = pkgs.lib.findFirst (p: p.tlType == "run") null pkgs.texlive.xcharter.pkgs;
         in {
           default = pkgs.mkShell {
-            packages = [ tex pkgs.gnumake ];
+            packages = [ pkgs.typst pkgs.gnumake ];
+            TYPST_FONT_PATHS = "${xcharterRun}/fonts/opentype/public/xcharter";
           };
         });
     };

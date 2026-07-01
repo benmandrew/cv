@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A LaTeX CV for Ben Andrew. A single source file (`cv.tex`) compiles into three variants of the PDF depending on the `\jobname` passed to `pdflatex`.
+A Typst CV for Ben Andrew. A single source file (`cv.typ`) compiles into three variants of the PDF depending on the `variant` input passed to `typst compile`.
 
 ## Commands
 
-Enter the dev shell first (provides pdflatex, chktex, lacheck, make — pinned via `flake.lock`):
+Enter the dev shell first (provides typst, make, and the XCharter font — pinned via `flake.lock`):
 ```sh
 nix develop
 ```
@@ -22,43 +22,43 @@ make cv.pdf
 make website.pdf
 make nolinks.pdf
 
-# Lint
-make lint          # runs both linters
-make lint-lacheck  # structural LaTeX checks
-make lint-chktex   # style checks (suppresses warnings -n1 -n8 -n12)
+# Lint (compiles each variant to /dev/null, surfacing Typst warnings)
+make lint
 
 # Remove built PDFs from root
 make clean
 ```
 
-Without Nix, install dependencies manually (Ubuntu/Debian):
-```sh
-sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
-```
+Without Nix, install Typst directly (e.g. `brew install typst`), and make sure a font named `XCharter` (or `Charter`) is resolvable — either as a system font, or via `TYPST_FONT_PATHS` pointing at a directory containing the XCharter OTF files.
 
 ## Architecture
 
-**Single source, three outputs** — `cv.tex` sets two booleans (`for_website`, `no_links`) by inspecting `\jobname` at compile time:
+**Single source, three outputs** — `cv.typ` reads `sys.inputs.variant` at compile time (set via `typst compile --input variant=<name>`):
 
-| `\jobname` | `for_website` | `no_links` | Effect |
+| `variant` | `for-website` | `no-links` | Effect |
 |---|---|---|---|
-| `cv` | false | false | Standard CV |
-| `website` | true | false | Adds "Last updated" timestamp for benmandrew.com |
-| `nolinks` | false | true | Wraps body in `\begin{NoHyper}` to strip hyperlinks; also hides LinkedIn/GitHub from header |
+| unset / `cv` | false | false | Standard CV |
+| `website` | true | false | Adds "Last updated" timestamp, placed top-right, for benmandrew.com |
+| `nolinks` | false | true | Renders link targets as plain text (no color/underline); also hides LinkedIn/GitHub from header |
 
-Build artifacts go into `build/` then are copied to the repo root.
+The Makefile builds each variant straight into the repo root (no intermediate build directory needed — Typst has no aux files).
 
-**`cv.sty`** — the style package defining all custom environments and commands:
-- `cventry{date}{title}` — two-column entry (date right, title+bullets left); used for education, experience, teaching
-- `onecolentry` — full-width block; used for publications and activities
-- `highlights` — bullet list inside entries
-- `header` — centred name + contact block at the top
-- `\entryspacing` — defined in `cv.tex` as `0.20 cm`; use `\vspace{\entryspacing}` between sibling entries within a section
+**Custom functions defined in `cv.typ`**:
+- `cventry(date, title, body)` — two-column entry (date right, title+bullets left); used for education, experience, teaching
+- `section(title)` — bold heading with an underline rule, used for each section
+- `clink(url, body)` — link helper that respects `no-links`
+- `entryspacing` — `0.08cm`; use `#v(entryspacing)` between sibling entries within a section
+
+**Fonts** — the CV uses `XCharter` (the OpenType, metric-compatible superset of Bitstream Charter). `flake.nix` pulls the font files out of `pkgs.texlive.xcharter`'s `run` package (not via `texlive.combine`, which doesn't merge font subdirectories reliably) and exports `TYPST_FONT_PATHS` in the dev shell. On macOS, plain "Charter" is also a built-in system font (used for local ad-hoc testing outside the dev shell), but the repo build always targets `XCharter` for reproducibility on any platform.
 
 ## Updating the "Last updated" date
 
-The website variant timestamp is hardcoded in `cv.tex`:
-```latex
-\ifthenelse{\boolean{for_website}}{\updateinfo[Jun 27th, 2026]}{}
+The website variant timestamp is hardcoded in `cv.typ`:
+```typst
+#if for-website [
+  #place(top + right, dy: -2cm)[
+    #text(size: 8pt, fill: gray, style: "italic")[Last updated on Jun 27th, 2026]
+  ]
+]
 ```
 Update this string when rebuilding for the website.
