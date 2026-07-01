@@ -66,7 +66,7 @@
   [Sep 2024 -- Present],
   [*University of Manchester*, PhD in Computer Science],
 )[
-  - Research focused on formal methods for understanding degraded systems.
+  - Research focused on formal verification of degraded systems.
   - Supervised by #clink("https://mariefarrell.github.io/", "Dr. Marie Farrell"), #clink("https://personalpages.manchester.ac.uk/staff/louise.dennis/", "Dr. Louise Dennis"), and #clink("https://personalpages.manchester.ac.uk/staff/michael.fisher/", "Prof. Michael Fisher").
 ]
 
@@ -88,14 +88,21 @@
 
 - Andrew, B. M. _Weakening Goals in Logical Specifications_. Rigorous State-Based Methods (ABZ) 2025. #clink("https://doi.org/10.1007/978-3-031-94533-5_22", "10.1007/978-3-031-94533-5_22")
 
+#section[Skills]
+
+- *Programming Languages:* OCaml, C++, C, Python, Rust
+- *Tools:* Git, Docker, Claude Code
+- *Spoken Languages:* English, French
+
 #section[Industry Experience]
 
 #cventry(
   [Sep 2022 -- Jun 2024],
   [*Software Engineer*, Tarides -- Paris, France],
 )[
-  - Developed open-source continuous integration (CI) software for the OCaml language's ecosystem, involving systems programming to distribute dependency solving, compilation, and testing to many operating systems and architectures.
-  - Responsible for the CI of the Opam Repository, the central package universe for OCaml with tens of thousands of packages.
+  - Built open-source CI infrastructure for the OCaml ecosystem, distributing dependency solving, compilation, and testing across a broad matrix of operating systems, CPU architectures, and compiler versions.
+  - Ran continuous testing of tens of thousands of packages across the Opam Repository, OCaml's central package universe.
+  - Exposed concrete bugs in the OCaml 5 multicore runtime through systematic stress-testing, reporting and tracking them to resolution upstream.
 ]
 
 #v(entryspacing)
@@ -115,11 +122,6 @@
 )[
   - Developed and implemented a visual model of ageing vision in virtual reality with Unity, as part of the Graphics and Displays Research Group.
 ]
-
-#section[Professional Activities]
-
-- Part of the local organising committee of Integrated Formal Methods (iFM) 2024.
-- Member of the #clink("https://autonomy-and-verification.github.io", "Autonomy and Verification Network").
 
 #section[Teaching Experience]
 
