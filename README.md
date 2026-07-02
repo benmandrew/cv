@@ -17,8 +17,4 @@ Produces:
 - `website.pdf` with a timestamp for https://www.benmandrew.com
 - `nolinks.pdf` that removes all hyperlinks from `cv.pdf`
 
-Without Nix, install dependencies manually (Ubuntu/Debian):
-
-```sh
-sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
-```
+Without Nix, install Typst directly (e.g. `brew install typst`), and make sure a font named `XCharter` (or `Charter`) is resolvable — either as a system font, or via `TYPST_FONT_PATHS` pointing at a directory containing the XCharter OTF files.
