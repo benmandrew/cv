@@ -8,7 +8,7 @@ A Typst CV for Ben Andrew. A single source file (`cv.typ`) compiles into three v
 
 ## Commands
 
-Enter the dev shell first (provides typst, make, and the XCharter font — pinned via `flake.lock`):
+Enter the dev shell first (provides typst, make, and the Libertinus font — pinned via `flake.lock`):
 ```sh
 nix develop
 ```
@@ -29,7 +29,7 @@ make lint
 make clean
 ```
 
-Without Nix, install Typst directly (e.g. `brew install typst`), and make sure a font named `XCharter` (or `Charter`) is resolvable — either as a system font, or via `TYPST_FONT_PATHS` pointing at a directory containing the XCharter OTF files.
+Without Nix, install Typst directly (e.g. `brew install typst`), and make sure a font named `Libertinus Serif` is resolvable — either as a system font (e.g. `brew install --cask font-libertinus`), or via `TYPST_FONT_PATHS` pointing at a directory containing the Libertinus OTF files.
 
 ## Architecture
 
@@ -43,13 +43,15 @@ Without Nix, install Typst directly (e.g. `brew install typst`), and make sure a
 
 The Makefile builds each variant straight into the repo root (no intermediate build directory needed — Typst has no aux files).
 
-**Custom functions defined in `cv.typ`**:
-- `cventry(date, title, body)` — two-column entry (date right, title+bullets left); used for education, experience, teaching
-- `section(title)` — bold heading with an underline rule, used for each section
-- `clink(url, body)` — link helper that respects `no-links`
-- `entryspacing` — `0.08cm`; use `#v(entryspacing)` between sibling entries within a section
+**Proportional page-fill** — all stretchable vertical whitespace (paragraph `leading`, list-item `spacing`, and the inter-entry/inter-section block gaps) is multiplied by a single scale factor `k`. The whole document lives in `cv-body(k)`; a trailing `context layout` block measures the body at `k=1` and `k=2` (height is affine in `k` since line count is fixed), solves for the `k` that fills the page, and re-emits the body at that `k`. `k` is clamped to `>= 1`, so overflow spills to a second page rather than compressing. This replaced an earlier `fr`-based approach — `fr` units can't drive `leading` or list `spacing`, only block-level `v()`. The base spacing values are the `base-*` constants near the top.
 
-**Fonts** — the CV uses `XCharter` (the OpenType, metric-compatible superset of Bitstream Charter). `flake.nix` pulls the font files out of `pkgs.texlive.xcharter`'s `run` package (not via `texlive.combine`, which doesn't merge font subdirectories reliably) and exports `TYPST_FONT_PATHS` in the dev shell. On macOS, plain "Charter" is also a built-in system font (used for local ad-hoc testing outside the dev shell), but the repo build always targets `XCharter` for reproducibility on any platform.
+**Custom functions/values, defined inside `cv-body(k)`** (so they can close over the scale factor):
+- `cventry(date, title, body)` — two-column entry (date right, title+bullets left); used for education, experience, teaching
+- `section(title)` — bold heading with an underline rule; its leading gap scales with `k`
+- `entryspacing` — `k * base-entry`; use `#v(entryspacing)` between sibling entries within a section
+- `clink(url, body)` — link helper that respects `no-links` (defined at top level, not inside `cv-body`)
+
+**Fonts** — the CV uses `Libertinus Serif` (the maintained fork of Linux Libertine). `flake.nix` exports `TYPST_FONT_PATHS` pointing at `pkgs.libertinus`'s `share/fonts/opentype` directory in the dev shell, so the OTFs resolve without installing anything system-wide. For reproducibility on any platform the repo build always targets the pinned Nix-provided font.
 
 ## Updating the "Last updated" date
 
