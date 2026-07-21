@@ -306,3 +306,6 @@ TSWLatexianTemp*
 #*Notes.bib
 
 build/*
+
+## direnv
+.direnv/
