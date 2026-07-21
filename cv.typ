@@ -67,7 +67,7 @@
   [*University of Manchester*, PhD in Computer Science],
 )[
   - Research focused on formal verification of degraded systems.
-  - Supervised by #clink("https://mariefarrell.github.io/", "Dr. Marie Farrell"), #clink("https://personalpages.manchester.ac.uk/staff/louise.dennis/", "Dr. Louise Dennis"), and #clink("https://personalpages.manchester.ac.uk/staff/michael.fisher/", "Prof. Michael Fisher").
+  - Supervised by #clink("https://mariefarrell.github.io/", "Dr. Marie Farrell"), #clink("https://personalpages.manchester.ac.uk/staff/louise.dennis/", "Prof. Louise Dennis"), and #clink("https://personalpages.manchester.ac.uk/staff/michael.fisher/", "Prof. Michael Fisher").
 ]
 
 #v(entryspacing)
